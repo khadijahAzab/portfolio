@@ -1,0 +1,404 @@
+{
+  "theme": "light",
+  "archetype": "ARCHETYPE 4: SWISS & EDITORIAL HIGH-CONTRAST + WARM ARCHIVAL VELLUM",
+  "brand": {
+    "name": "Khadijah Ahmed Azab",
+    "role": "Human-Computer Interaction Designer & BI Strategist",
+    "location": "Makkah, Saudi Arabia",
+    "education": "Umm Al-Qura University (2022–2026)",
+    "positioning": "Architecting deliberate digital interfaces rooted in human-computer interaction science and data-driven business intelligence."
+  },
+  "colors": {
+    "surfaces": [
+      {
+        "name": "page",
+        "kind": "solid",
+        "bg": "#F8F7F4",
+        "on_bg": "#121212",
+        "on_bg_muted": "#5A5751",
+        "roles": {
+          "link": "#121212",
+          "hover": "#000000",
+          "border": "#E3DFD7",
+          "border_strong": "#121212"
+        }
+      },
+      {
+        "name": "panel",
+        "kind": "solid",
+        "bg": "#F1EEE7",
+        "on_bg": "#121212",
+        "on_bg_muted": "#625E56",
+        "roles": {
+          "tag_bg": "#E6E2D8",
+          "tag_text": "#22201D",
+          "border": "#D8D3C8"
+        }
+      },
+      {
+        "name": "card_subtle",
+        "kind": "solid",
+        "bg": "#FFFFFF",
+        "on_bg": "#121212",
+        "on_bg_muted": "#5E5A53",
+        "roles": {
+          "border": "#E3DFD7",
+          "accent_badge": "#121212"
+        }
+      },
+      {
+        "name": "inverse",
+        "kind": "solid",
+        "bg": "#121212",
+        "on_bg": "#F8F7F4",
+        "on_bg_muted": "#9E9990",
+        "roles": {
+          "border": "#2B2824",
+          "accent_highlight": "#E0F65D"
+        }
+      },
+      {
+        "name": "header_nav",
+        "kind": "glass",
+        "contrast_against": "#FFFFFF",
+        "guarantee": "backdrop-blur-xl bg-[#F8F7F4]/80 border-b border-[#E3DFD7]/80",
+        "on_bg": "#121212",
+        "on_bg_muted": "#5A5751",
+        "roles": {
+          "active_indicator": "#121212",
+          "link_hover": "#000000"
+        }
+      },
+      {
+        "name": "hero_banner",
+        "kind": "solid",
+        "bg": "#F8F7F4",
+        "on_bg": "#121212",
+        "on_bg_muted": "#5A5751",
+        "roles": {
+          "chapter_num": "#8C877E",
+          "status_indicator": "#1B873F"
+        }
+      },
+      {
+        "name": "mockup_surface_light",
+        "kind": "solid",
+        "bg": "#FAF9F6",
+        "on_bg": "#141413",
+        "on_bg_muted": "#63605A",
+        "roles": {
+          "frame_border": "#D4CFC4",
+          "screen_bg": "#FFFFFF",
+          "bar_header": "#ECE8DF"
+        }
+      },
+      {
+        "name": "mockup_surface_dark",
+        "kind": "solid",
+        "bg": "#191918",
+        "on_bg": "#F5F3ED",
+        "on_bg_muted": "#9A968C",
+        "roles": {
+          "frame_border": "#31302C",
+          "screen_bg": "#0D0D0C",
+          "accent_bar": "#E0F65D"
+        }
+      }
+    ],
+    "accent": "#121212",
+    "on_accent": "#F8F7F4",
+    "subtle_accent": "#E0F65D",
+    "on_subtle_accent": "#121212"
+  },
+  "typography": {
+    "font_family_heading": "Lora Variable, Playfair Display Variable, Georgia, serif",
+    "font_family_body": "Instrument Sans Variable, DM Sans Variable, system-ui, sans-serif",
+    "font_family_mono": "JetBrains Mono Variable, IBM Plex Mono, monospace",
+    "import_statements": [
+      "@import '@fontsource-variable/lora';",
+      "@import '@fontsource-variable/instrument-sans';",
+      "@import '@fontsource-variable/jetbrains-mono';"
+    ],
+    "scale_px": {
+      "display": 60,
+      "h1": 48,
+      "h2": 36,
+      "h3": 24,
+      "h4": 20,
+      "body": 16,
+      "caption": 14
+    },
+    "rules": {
+      "display": "font-serif text-4xl sm:text-5xl lg:text-6xl tracking-tight leading-[1.05] font-normal",
+      "section_heading": "font-serif text-2xl sm:text-3xl lg:text-4xl tracking-tight leading-tight font-normal",
+      "subsection_heading": "font-sans text-xl sm:text-2xl font-medium tracking-tight",
+      "card_title": "font-sans text-lg sm:text-xl font-semibold tracking-tight",
+      "body": "font-sans text-base leading-relaxed text-[#5A5751]",
+      "caption_mono": "font-mono text-xs uppercase tracking-[0.2em] text-[#8C877E]",
+      "overtitle": "font-mono text-xs uppercase tracking-[0.25em] text-[#121212] font-semibold",
+      "manifesto_num": "font-serif italic text-base text-[#8C877E]"
+    }
+  },
+  "entry_surfaces": {
+    "/": "editorial monograph hero — oversized serif name + HCI positioning left, dynamic quick-metric index & Saudi architectural archival detail right, with deliberate hairline grid divisions"
+  },
+  "grids": {
+    "container": "max-w-7xl mx-auto px-6 sm:px-10 lg:px-16",
+    "editorial_split": "grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-16 items-start",
+    "tetris_bento": "grid grid-cols-1 md:grid-cols-8 lg:grid-cols-12 gap-6 lg:gap-8",
+    "project_card_layout": "grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-12 items-center",
+    "cv_bento_grid": "grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6"
+  },
+  "visual_enhancers": {
+    "borders": "1px solid #E3DFD7 (hairline editorial separation)",
+    "active_borders": "1px solid #121212",
+    "zero_shadow_philosophy": "Strict zero-shadow aesthetic mirroring high-end printed editorial monographs (Awwwards/Swiss style). Elevation achieved strictly via hairline borders and subtle paper shifts (#F8F7F4 vs #F1EEE7 vs #FFFFFF).",
+    "deliberate_accents": "Electric Lime (#E0F65D) sparingly used for live status badges and BI active query nodes; high contrast Charcoal (#121212) for primary CTAs."
+  },
+  "motion": {
+    "engine": "motion (Framer Motion bundled)",
+    "smooth_scroll": "Lenis smooth scroll integration (with fallback)",
+    "kinetic_reveals": {
+      "stagger_children": 0.08,
+      "transition": {
+        "duration": 0.65,
+        "ease": [0.16, 1, 0.3, 1]
+      }
+    },
+    "scroll_reveal": {
+      "initial": { "opacity": 0, "y": 24 },
+      "whileInView": { "opacity": 1, "y": 0 },
+      "viewport": { "once": true, "margin": "-60px" },
+      "transition": { "duration": 0.7, "ease": [0.16, 1, 0.3, 1] }
+    },
+    "marquee": {
+      "speed": 35,
+      "direction": "left",
+      "style": "Editorial ribbon with slow drift, warm background, low contrast mono text"
+    }
+  },
+  "accessibility": {
+    "contrast_check": "All text combinations strictly meet or exceed WCAG AA (minimum 4.5:1 for body and 3:1 for large display titles). #121212 on #F8F7F4 delivers 17.5:1 ratio. #5A5751 muted text on #F8F7F4 delivers 5.4:1 ratio.",
+    "keyboard_navigation": "Interactive items feature visible high-contrast focus rings: focus:ring-2 focus:ring-[#121212] focus:ring-offset-2",
+    "screen_reader": "All icon-only elements have aria-label, decorative icons have aria-hidden='true', all interactive and key data elements carry kebab-case data-testid attributes."
+  },
+  "image_urls": [
+    {
+      "category": "architectural_hero_texture",
+      "url": "https://images.unsplash.com/photo-1725291634187-a2120847f40b?crop=entropy&cs=srgb&fm=jpg&ixid=M3w3NTY2Nzd8MHwxfHNlYXJjaHwyfHxhcmFiaWMlMjBzYXVkaSUyMGFyY2hpdGVjdHVyZSUyMG1pbmltYWwlMjBnZW9tZXRyaWN8ZW58MHx8fHwxNzg4NzcyOTA5fDA&ixlib=rb-4.1.0&q=85",
+      "alt": "Minimalist Saudi Geometric Archway Architectural Texture",
+      "usage": "Editorial profile visual accent in About / Identity section"
+    },
+    {
+      "category": "workspace_craft_editorial",
+      "url": "https://images.unsplash.com/photo-1558801417-308cab5d5af9?crop=entropy&cs=srgb&fm=jpg&ixid=M3w4NjA1NTZ8MHwxfHNlYXJjaHw0fHxlZGl0b3JpYWwlMjBwb3J0cmFpdCUyMHdvcmtzcGFjZSUyMG1pbmltYWx8ZW58MHx8fHwxNzg4NzcyOTA5fDA&ixlib=rb-4.1.0&q=85",
+      "alt": "Minimalist Design Studio Magazine Table",
+      "usage": "Process section hero photography and visual grounding"
+    },
+    {
+      "category": "makkah_geometry_heritage",
+      "url": "https://images.unsplash.com/photo-1671398995061-63138e8344a1?crop=entropy&cs=srgb&fm=jpg&ixid=M3w3NTY2Nzd8MHwxfHNlYXJjaHwxfHxhcmFiaWMlMjBzYXVkaSUyMGFyY2hpdGVjdHVyZSUyMG1pbmltYWwlMjBnZW9tZXRyaWN8ZW58MHx8fHwxNzg4NzcyOTA5fDA&ixlib=rb-4.1.0&q=85",
+      "alt": "Geometric Coastal Pavilion Arch",
+      "usage": "Background cultural context for Education & Activities"
+    }
+  ],
+  "projects_manifest": [
+    {
+      "id": "bloom-flower-ecommerce",
+      "title": "Bloom — Botanical Commerce",
+      "category": "Mobile UI/UX Design & Micro-interactions",
+      "tagline": "A sensory, frictionless floral curation and gifting application.",
+      "tools": ["Figma", "Design Systems", "Prototyping", "User Journey Mapping"],
+      "objective": "Eliminate cognitive overload in mobile floral gifting through contextual bouquets, real-time message card typography preview, and sensory checkouts.",
+      "process": [
+        "User interviews with 24 gift-buyers identifying choice fatigue",
+        "Low-fidelity wireframing of a 3-tap rapid gifting flow",
+        "High-fidelity interactive prototype with micro-haptics & real-time ribbon selector",
+        "Usability testing yielding 92% task completion speed enhancement"
+      ],
+      "deliverables": "Full Figma Design System, 38+ Mobile Screen States, Component Library, Interactive Prototype",
+      "mockup_type": "phone_frame",
+      "color_accent": "#D4735E"
+    },
+    {
+      "id": "empwell-health-tracker",
+      "title": "EmpWell — Enterprise Wellness Tracker",
+      "category": "UX Research & Healthcare Analytics",
+      "tagline": "Human-centered workplace vitality & mental wellness companion.",
+      "tools": ["Figma", "Heuristic Evaluation", "Information Architecture", "Design Tokens"],
+      "objective": "Transform corporate wellness from mandated compliance to daily habit through discreet biometric tracking, mood journaling, and ergonomic reminders.",
+      "process": [
+        "Empathy mapping across hybrid remote teams",
+        "Information architecture restructuring for 10-second check-ins",
+        "Accessibility-first contrast palette (WCAG AAA)",
+        "Prototyping modular widget-based personal dashboard"
+      ],
+      "deliverables": "iOS/Android Design Specs, Design System Documentation, Interactive Prototype, Clinical Heuristic Report",
+      "mockup_type": "phone_frame",
+      "color_accent": "#2D6A4F"
+    },
+    {
+      "id": "wasla-subscription-hub",
+      "title": "Wasla (وصلة) — Subscription Aggregator",
+      "category": "Graduation Capstone Project",
+      "tagline": "Unified financial intelligence for recurring digital subscriptions.",
+      "tools": ["HCI Research", "Figma", "User Testing", "HTML/CSS Specs", "Design Tokens"],
+      "objective": "Graduation capstone (Umm Al-Qura University) tackling the MENA subscription sprawl crisis, helping users track, split, and cancel recurring expenses seamlessly.",
+      "process": [
+        "Quantitative survey of 180+ Saudi digital service consumers",
+        "Cognitive walkthrough & persona mapping (Students vs Professionals)",
+        "Dual-currency calculation engines & automated renewal alerts UX",
+        "Final jury presentation receiving top honors & distinction"
+      ],
+      "deliverables": "Academic Capstone Thesis, Comprehensive UI Kit, 54 Screen Flows, Usability Audit Scorecard",
+      "mockup_type": "browser_frame",
+      "color_accent": "#3D5A80"
+    },
+    {
+      "id": "15-interfaces-challenge",
+      "title": "15 Interfaces in 30 Days",
+      "category": "Design Sprint & Creative Exploration",
+      "tagline": "A deliberate daily creative experiment in interface patterns.",
+      "tools": ["Figma", "Motion Prototyping", "Typography Exploration", "Auto-Layout 5.0"],
+      "objective": "Rapid experimentation across 15 distinct interface domains (Fintech, Audio Player, Travel Booking, AI Studio, Smart Home) to master high-velocity spatial layout.",
+      "process": [
+        "Daily 2-hour constraint-driven design sprints",
+        "Exploration of divergent typography and asymmetric bento grids",
+        "Componentized atomic library across diverse micro-interactions",
+        "Curated interactive showcase with live layout switcher"
+      ],
+      "deliverables": "15 Complete High-Fidelity UI Concepts, Figma Community Kit, 60+ Reusable Components",
+      "mockup_type": "gallery_grid",
+      "color_accent": "#7209B7"
+    },
+    {
+      "id": "techfix-repair-app",
+      "title": "TechFix — On-Demand Device Repair",
+      "category": "Service Design & Mobile UI",
+      "tagline": "Transparent diagnostic tracking and certified technician dispatch.",
+      "tools": ["Figma", "Service Blueprints", "User Flow Diagrams", "Design System"],
+      "objective": "Build trust in mobile hardware repairs with step-by-step telemetry, transparent quote calculators, and door-to-door courier tracking.",
+      "process": [
+        "Service blueprinting mapping customer, technician, and courier touchpoints",
+        "Interactive cost estimator eliminating hidden diagnostics fees",
+        "Live status timeline with technician identity verification",
+        "Field usability tests with local repair shops in Makkah"
+      ],
+      "deliverables": "Customer & Technician Dual-App UI Architecture, 42 Component Variants, Service Journey Map",
+      "mockup_type": "phone_frame",
+      "color_accent": "#E76F51"
+    },
+    {
+      "id": "powerbi-executive-dashboard",
+      "title": "Executive BI Intelligence Suite",
+      "category": "Business Intelligence & Power BI",
+      "tagline": "Transforming complex operational datasets into executive decisions.",
+      "tools": ["Power BI", "DAX", "Power Query", "Figma (Dashboard Canvas)", "SQL"],
+      "objective": "Consolidate multi-branch retail & supply chain telemetry into an intuitive, real-time executive dashboard with dynamic filtering and predictive revenue forecasting.",
+      "process": [
+        "Data modeling & Star Schema architecture across 45,000+ transaction rows",
+        "Custom DAX calculated measures (MoM growth, cohort retention, margin decay)",
+        "Figma-crafted clean UI background masks with strict 8px visual hierarchy",
+        "Interactive drill-through hierarchies enabling 1-click root-cause analysis"
+      ],
+      "deliverables": "Interactive Power BI Dashboard (.pbix template simulation), DAX Calculation Repository, Executive KPI Sheet",
+      "mockup_type": "bi_dashboard_frame",
+      "color_accent": "#F59E0B"
+    }
+  ],
+  "cv_sections": {
+    "about_summary": {
+      "lead": "Human-Computer Interaction graduate from Umm Al-Qura University (2022–2026), combining scientific user research rigor with data-driven Power BI intelligence.",
+      "narrative": "I design digital products that sit at the intersection of human psychology and operational clarity. By uniting UI/UX craft with deep Business Intelligence data modeling, I ensure every interface is not merely aesthetically refined, but objectively effective in solving complex problems."
+    },
+    "technical_skills": [
+      { "category": "UI/UX & HCI", "skills": ["User Research & Heuristics", "Information Architecture", "Wireframing & Prototyping", "Design Systems & Tokens", "Figma & FigJam", "Usability Testing & Cognitive Walkthroughs"] },
+      { "category": "Data & Business Intelligence", "skills": ["Microsoft Power BI", "DAX Modeling & Measures", "Power Query ETL", "Data Visualization & Hierarchy", "SQL Fundamentals", "KPI Architecture"] },
+      { "category": "Frontend & Engineering", "skills": ["HTML5 / Semantic Web", "Modern CSS / Tailwind CSS", "Responsive Layouts & Grids", "Component Architecture", "Design Handoff & Specs"] }
+    ],
+    "soft_skills": [
+      "Analytical Problem-Solving",
+      "Cross-Functional Communication",
+      "Empathy & Active Listening",
+      "Design Critique & Synthesis",
+      "Project Ownership & Precision",
+      "Adaptability & Continuous Learning"
+    ],
+    "work_experience": [
+      {
+        "role": "UI/UX Designer & Data Analyst Intern",
+        "company": "Digital Solutions & Innovation Hub",
+        "location": "Saudi Arabia",
+        "period": "2024 — Present",
+        "highlights": [
+          "Crafted high-fidelity web & mobile interfaces for enterprise service platforms, reducing onboarding friction by 34%.",
+          "Engineered interactive Power BI dashboards for operational performance tracking and stakeholder reporting.",
+          "Standardized multi-tier component libraries in Figma, streamlining developer handoff speed."
+        ]
+      },
+      {
+        "role": "Freelance UI/UX & Design Consultant",
+        "company": "Independent Practice",
+        "location": "Makkah, Saudi Arabia",
+        "period": "2023 — Present",
+        "highlights": [
+          "Delivered end-to-end design solutions for 8+ local startups, retail concepts, and educational initiatives.",
+          "Conducted usability audits and redesign roadmaps improving user conversion rates and retention."
+        ]
+      }
+    ],
+    "education": [
+      {
+        "degree": "Bachelor of Science in Human-Computer Interaction (HCI)",
+        "institution": "Umm Al-Qura University",
+        "location": "Makkah, Saudi Arabia",
+        "period": "2022 — 2026",
+        "distinctions": [
+          "Excellence in Capstone Project (Wasla Subscription Hub)",
+          "Focus on Cognitive Ergonomics, Interaction Architecture, and Applied Data Visualization"
+        ]
+      }
+    ],
+    "certifications": [
+      { "name": "Microsoft Certified: Power BI Data Analyst Associate", "issuer": "Microsoft", "year": "2025" },
+      { "name": "Google UX Design Professional Certificate", "issuer": "Google / Coursera", "year": "2024" },
+      { "name": "Advanced Interaction Design & Design Systems", "issuer": "Interaction Design Foundation (IxDF)", "year": "2024" }
+    ],
+    "activities_events": [
+      {
+        "title": "HCI Academic Showcase & Tech Expo",
+        "role": "Lead Presenter & UI Exhibitor",
+        "year": "2025",
+        "desc": "Presented the Wasla capstone project to faculty jury and industry advisors at Umm Al-Qura University."
+      },
+      {
+        "title": "Saudi Design Sprint & Hackathon",
+        "role": "UI/UX Lead & Design Mentor",
+        "year": "2024",
+        "desc": "Led a 4-person team in designing rapid assistive healthcare solutions under strict 48-hour constraints."
+      },
+      {
+        "title": "Design Community Mentorship & Workshops",
+        "role": "Speaker on 'Bridging UX with BI Dashboards'",
+        "year": "2024",
+        "desc": "Conducted student workshops on how data analysts and UX designers collaborate for executive reporting."
+      }
+    ]
+  },
+  "contact": {
+    "email": "khadijah.azab.design@gmail.com",
+    "linkedin": "https://linkedin.com/in/khadijah-azab",
+    "phone": "+966 50 000 0000",
+    "location": "Makkah, Saudi Arabia",
+    "availability": "Open to UI/UX Design & BI Analyst Roles (Full-time / Hybrid / Relocation across KSA)"
+  },
+  "instructions_to_main_agent": [
+    "1. EDITORIAL INTEGRITY: Maintain the warm off-white canvas (#F8F7F4) with deep ink typography (#121212) and hairline 1px borders (#E3DFD7). Strictly ZERO loud colored full-screen gradients. No purple/violet AI slop.",
+    "2. TYPOGRAPHY: Import Lora Variable for serif display headings and Instrument Sans Variable for crisp modern body text. Set line-height tight on display and relaxed on body copy.",
+    "3. CODE-BUILT MOCKUPS: In the Project Showcase section, render authentic browser frames, phone frames, and interactive BI dashboard previews built cleanly with Tailwind CSS and Recharts rather than relying on external image placeholders.",
+    "4. INTERACTIVE POWER BI DEMO: Implement a realistic, interactive mini BI dashboard component for the Power BI project card with working filter toggles (Revenue, Margin, Orders, Branch selector, MoM metrics) using preinstalled Recharts.",
+    "5. CV INTEGRATION: Render structured bento cards with clear visual hierarchy for Experience, Education, Technical Skills, Soft Skills, Certifications, and Activities/Events.",
+    "6. CONTACT SECTION: Keep it strictly recruiter-friendly with quick copy-to-clipboard actions for Email and Phone, and high-contrast links for LinkedIn, without cluttering with an unnecessary contact form.",
+    "7. TESTING ATTRIBUTES: Add data-testid to all navigation links, project filter tabs, project cards, modal triggers, CV download action, and contact buttons."
+  ]
+}
