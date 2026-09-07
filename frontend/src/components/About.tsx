@@ -14,9 +14,6 @@ export default function About() {
           <Reveal>
             <p className="font-heading text-xl leading-relaxed sm:text-2xl">{profile.summary}</p>
           </Reveal>
-          <Reveal delay={0.12}>
-            <p className="mt-8 max-w-xl text-base leading-relaxed text-[#5A5751]">{profile.narrative}</p>
-          </Reveal>
 
           <div className="mt-12 grid grid-cols-2 gap-px border border-[#E3DFD7] bg-[#E3DFD7] sm:grid-cols-4">
             {stats.map((s, i) => (

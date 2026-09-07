@@ -11,6 +11,7 @@ export interface Project {
   link?: string;
   linkLabel?: string;
   visual: "wasla" | "bloom" | "empwell" | "bi" | "challenge" | "techfix";
+  images?: { src: string; caption: string }[];
 }
 
 export const profile = {
@@ -27,8 +28,6 @@ export const profile = {
   availability: "Open to UI/UX & BI opportunities",
   summary:
     "Human-Computer Interaction graduate with practical exposure to user experience, user interface, and user-centered digital solution development. Skilled in applying usability, accessibility, interaction design, information architecture, wireframing, and prototyping principles to simplify complex applications and improve digital experiences.",
-  narrative:
-    "I work at the intersection of human psychology and operational clarity — crafting interfaces in Figma that respect how people think, and building Power BI dashboards that respect what the data says. Every screen I ship is measured against real users, and every chart against a real decision.",
 };
 
 export const stats = [
@@ -136,7 +135,7 @@ export const projects: Project[] = [
     tagline: "A bilingual Arabic–English hub that tracks subscriptions, spending, and renewal reminders.",
     objective:
       "Graduation project at Umm Al-Qura University: help users regain control of recurring digital expenses through a single bilingual mobile app that tracks subscriptions, monitors spending, and sends renewal reminders before money leaves the account.",
-    tools: ["Figma", "Flutter", "Dart", "Firebase", "WCAG 2.1 AA", "Usability Testing"],
+    tools: ["Figma", "Firebase", "WCAG 2.1 AA", "Usability Testing"],
     process: [
       "Applied HCI and user-centered design principles from research through delivery.",
       "Engineered accessibility in: WCAG 2.1 AA contrast, adjustable font sizes, dark/light mode, responsive layouts.",
@@ -144,10 +143,13 @@ export const projects: Project[] = [
       "Ran think-aloud usability testing with 5 participants and iterated on the findings.",
     ],
     deliverables:
-      "Working bilingual mobile app (Flutter + Firebase), full Figma design system, accessibility audit, and usability test report.",
+      "Working bilingual mobile app (iOS + Android), full Figma design system, accessibility audit, and usability test report.",
     link: "https://wasla-project.vercel.app/",
     linkLabel: "Visit live project",
     visual: "wasla",
+    images: [
+      { src: "/projects/wasla.webp", caption: "Live product — wasla-project.vercel.app" },
+    ],
   },
   {
     id: "bloom",
@@ -167,6 +169,9 @@ export const projects: Project[] = [
     deliverables:
       "12+ high-fidelity screens covering home, catalog, product, cart, payment, success, and profile — with a clickable prototype.",
     visual: "bloom",
+    images: [
+      { src: "/projects/bloom.webp", caption: "Full screen set — splash, catalog, product, cart, pay & success" },
+    ],
   },
   {
     id: "empwell",
@@ -186,6 +191,9 @@ export const projects: Project[] = [
     deliverables:
       "High-fidelity dark-mode screens: onboarding, sign-up, Today dashboard, and daily detail analytics.",
     visual: "empwell",
+    images: [
+      { src: "/projects/empwell.webp", caption: "Login, onboarding, Today dashboard & daily detail" },
+    ],
   },
   {
     id: "bi",
@@ -224,6 +232,10 @@ export const projects: Project[] = [
     deliverables:
       "15 complete high-fidelity interface concepts — including FloraGoGo, a fitness tracker, podcast player, chat, and state screens.",
     visual: "challenge",
+    images: [
+      { src: "/projects/challenge-1.webp", caption: "Board 1 — FloraGoGo, checkout, perfume store, fitness & profile" },
+      { src: "/projects/challenge-2.webp", caption: "Board 2 — 404, podcast, success/error states, chat, store & countdown" },
+    ],
   },
   {
     id: "techfix",
@@ -243,6 +255,9 @@ export const projects: Project[] = [
     deliverables:
       "Complete app flow: About, login/sign-up, home, repair, camera, chat, and contact screens.",
     visual: "techfix",
+    images: [
+      { src: "/projects/techfix.webp", caption: "Full 8-page flow — about, auth, home, repair, camera, chat & contact" },
+    ],
   },
 ];
 
@@ -251,10 +266,12 @@ export const archive = [
     title: "Recipes & Store App",
     course: "Information Architecture",
     desc: "IA-driven mobile app spanning home, recipe detail, store, cart, checkout, and profile.",
+    image: "/projects/ia.webp",
   },
   {
     title: "Marketplace & Messaging",
     course: "Design Systems",
     desc: "Component-based e-commerce system: listings, product options, Mada/Tabby/Tamara payments, and chat.",
+    image: "/projects/design-systems.webp",
   },
 ];

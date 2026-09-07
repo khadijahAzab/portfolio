@@ -28,6 +28,12 @@ Design and build a professional portfolio integrating the owner's CV with UI/UX 
 ## Verified
 - `yarn typecheck` clean; `/api/` + `/api/status` POST via public URL; CV PDF 200; screenshots: hero, about, projects, bloom, empwell, bi (filters clicked — values update), contact (copy fallback added after permission-denied in headless test)
 
+## Updates (2026-09-07, round 2 — owner feedback, Arabic)
+- Project visuals now use the owner's ORIGINAL images (no code-rebuilt mockups): Bloom & EmpWell uploaded collages, 15-interfaces boards + TechFix/IA/Design-Systems cropped from the uploaded PDFs at 3x render + sharpen, saved as high-quality WebP in `frontend/public/projects/`; Wasla shows a real screenshot of the live site
+- Wasla tools: removed Flutter & Dart per owner request (now Figma, Firebase, WCAG 2.1 AA, Usability Testing)
+- About: second (small) paragraph removed; only the CV professional summary remains
+- Archive cards now show the IA and Design Systems project images
+
 ## Backlog
 - P0: Add real LinkedIn URL (not present in CV) once owner provides it
 - P1: Owner content edits after review (wording, metrics)

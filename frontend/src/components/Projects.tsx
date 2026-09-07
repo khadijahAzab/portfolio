@@ -1,24 +1,62 @@
 import { ArrowUpRight } from "lucide-react";
 import { Reveal, SectionHeading } from "@/components/Reveal";
 import { archive, projects, type Project } from "@/data/portfolio";
-import { BloomMockups, ChallengeMockups, EmpWellMockups, TechFixMockups, WaslaMockup } from "@/components/mockups/AppScreens";
 import BIDashboard from "@/components/mockups/BIDashboard";
+import { BrowserFrame } from "@/components/mockups/Frames";
 
-function Visual({ kind }: { kind: Project["visual"] }) {
-  switch (kind) {
-    case "bloom":
-      return <BloomMockups />;
-    case "empwell":
-      return <EmpWellMockups />;
-    case "wasla":
-      return <WaslaMockup />;
-    case "bi":
-      return <BIDashboard />;
-    case "challenge":
-      return <ChallengeMockups />;
-    case "techfix":
-      return <TechFixMockups />;
+function FramedImage({ src, caption }: { src: string; caption: string }) {
+  return (
+    <figure className="group/img">
+      <div className="overflow-hidden rounded-xl border border-[#D4CFC4] bg-white">
+        <img
+          src={src}
+          alt={caption}
+          loading="lazy"
+          className="w-full transition-transform duration-700 group-hover/img:scale-[1.02]"
+        />
+      </div>
+      <figcaption className="mt-3 text-center font-mono text-[10px] uppercase tracking-[0.2em] text-[#8C877E]">
+        {caption}
+      </figcaption>
+    </figure>
+  );
+}
+
+function Visual({ project }: { project: Project }) {
+  if (project.visual === "bi") return <BIDashboard />;
+  if (project.visual === "wasla") {
+    const img = project.images?.[0];
+    if (!img) return null;
+    return (
+      <figure className="group/img mx-auto w-full max-w-2xl">
+        <BrowserFrame url="wasla-project.vercel.app">
+          <img
+            src={img.src}
+            alt={img.caption}
+            loading="lazy"
+            className="w-full transition-transform duration-700 group-hover/img:scale-[1.015]"
+          />
+        </BrowserFrame>
+        <figcaption className="mt-3 text-center font-mono text-[10px] uppercase tracking-[0.2em] text-[#8C877E]">
+          {img.caption}
+        </figcaption>
+      </figure>
+    );
   }
+  const images = project.images ?? [];
+  return (
+    <div
+      className={
+        images.length > 1
+          ? "grid grid-cols-1 items-start gap-6 sm:grid-cols-2"
+          : "mx-auto w-full max-w-2xl"
+      }
+    >
+      {images.map((img) => (
+        <FramedImage key={img.src} src={img.src} caption={img.caption} />
+      ))}
+    </div>
+  );
 }
 
 function ProjectBlock({ project, flip }: { project: Project; flip: boolean }) {
@@ -44,7 +82,7 @@ function ProjectBlock({ project, flip }: { project: Project; flip: boolean }) {
       <div className="mt-12 grid grid-cols-1 items-start gap-10 lg:grid-cols-12 lg:gap-14">
         <Reveal delay={0.1} className={flip ? "lg:order-2 lg:col-span-7" : "lg:col-span-7"}>
           <div className="border border-[#E3DFD7] bg-[#F1EEE7] px-6 py-12 sm:px-10">
-            <Visual kind={project.visual} />
+            <Visual project={project} />
           </div>
         </Reveal>
 
@@ -129,7 +167,15 @@ export default function Projects() {
           <div className="mt-6 grid grid-cols-1 gap-8 sm:grid-cols-2">
             {archive.map((a) => (
               <div key={a.title} data-testid={`archive-${a.title.toLowerCase().replace(/[^a-z0-9]+/g, "-")}`}>
-                <p className="font-heading text-xl tracking-tight">{a.title}</p>
+                <div className="overflow-hidden rounded-lg border border-[#D8D3C8] bg-white">
+                  <img
+                    src={a.image}
+                    alt={`${a.title} — ${a.course} project screens`}
+                    loading="lazy"
+                    className="w-full transition-transform duration-700 hover:scale-[1.02]"
+                  />
+                </div>
+                <p className="mt-4 font-heading text-xl tracking-tight">{a.title}</p>
                 <p className="mt-1 font-mono text-[10px] uppercase tracking-[0.15em] text-[#8C877E]">{a.course}</p>
                 <p className="mt-2 text-sm leading-relaxed text-[#5A5751]">{a.desc}</p>
               </div>
