@@ -64,7 +64,7 @@ export const skillGroups = [
   {
     title: "Tools & Code",
     caption: "Execution stack",
-    skills: ["Figma", "HTML / CSS", "Canva", "PowerPoint", "Word", "Flutter & Dart (academic)"],
+    skills: ["Figma", "HTML / CSS", "Canva", "PowerPoint", "Word"],
   },
 ];
 
