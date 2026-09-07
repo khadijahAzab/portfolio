@@ -14,65 +14,57 @@ import {
 } from "recharts";
 import { BrowserFrame } from "./Frames";
 
-type Metric = "revenue" | "margin" | "orders";
+type CollegeKey = "all" | "computing" | "education" | "economics";
+type Metric = "graduates" | "gpa";
+
+const COLLEGES: { id: CollegeKey; label: string }[] = [
+  { id: "all", label: "كل الكليات" },
+  { id: "computing", label: "الحاسبات" },
+  { id: "education", label: "التربية" },
+  { id: "economics", label: "الإدارة والاقتصاد" },
+];
 
 const METRICS: { id: Metric; label: string }[] = [
-  { id: "revenue", label: "Revenue" },
-  { id: "margin", label: "Margin" },
-  { id: "orders", label: "Orders" },
+  { id: "graduates", label: "الخريجين" },
+  { id: "gpa", label: "المعدل" },
 ];
 
-const BRANCHES = ["All", "Makkah", "Jeddah", "Riyadh"] as const;
+const YEARS = ["1436", "1438", "1439", "1441", "1442", "1443"];
 
-const MONTHLY: Record<(typeof BRANCHES)[number], { m: string; revenue: number; margin: number; orders: number }[]> = {
-  All: [
-    { m: "Jan", revenue: 820, margin: 31, orders: 1240 },
-    { m: "Feb", revenue: 760, margin: 29, orders: 1180 },
-    { m: "Mar", revenue: 910, margin: 34, orders: 1390 },
-    { m: "Apr", revenue: 880, margin: 33, orders: 1310 },
-    { m: "May", revenue: 1040, margin: 36, orders: 1520 },
-    { m: "Jun", revenue: 1120, margin: 38, orders: 1640 },
-  ],
-  Makkah: [
-    { m: "Jan", revenue: 310, margin: 33, orders: 470 },
-    { m: "Feb", revenue: 290, margin: 31, orders: 440 },
-    { m: "Mar", revenue: 350, margin: 36, orders: 520 },
-    { m: "Apr", revenue: 340, margin: 35, orders: 500 },
-    { m: "May", revenue: 410, margin: 39, orders: 590 },
-    { m: "Jun", revenue: 440, margin: 41, orders: 640 },
-  ],
-  Jeddah: [
-    { m: "Jan", revenue: 280, margin: 30, orders: 430 },
-    { m: "Feb", revenue: 260, margin: 28, orders: 410 },
-    { m: "Mar", revenue: 320, margin: 33, orders: 480 },
-    { m: "Apr", revenue: 300, margin: 32, orders: 450 },
-    { m: "May", revenue: 360, margin: 35, orders: 530 },
-    { m: "Jun", revenue: 390, margin: 37, orders: 570 },
-  ],
-  Riyadh: [
-    { m: "Jan", revenue: 230, margin: 30, orders: 340 },
-    { m: "Feb", revenue: 210, margin: 28, orders: 330 },
-    { m: "Mar", revenue: 240, margin: 32, orders: 390 },
-    { m: "Apr", revenue: 240, margin: 31, orders: 360 },
-    { m: "May", revenue: 270, margin: 33, orders: 400 },
-    { m: "Jun", revenue: 290, margin: 35, orders: 430 },
-  ],
+const GRADUATES: Record<CollegeKey, number[]> = {
+  all: [240, 410, 520, 610, 890, 817],
+  computing: [58, 96, 121, 140, 205, 188],
+  education: [70, 118, 150, 176, 258, 236],
+  economics: [44, 72, 91, 106, 154, 142],
 };
 
-const CATEGORIES = [
-  { name: "Grocery", value: 38 },
-  { name: "Electronics", value: 26 },
-  { name: "Apparel", value: 21 },
-  { name: "Home", value: 15 },
+const GPA: Record<CollegeKey, number[]> = {
+  all: [2.91, 2.95, 3.0, 3.04, 3.09, 3.02],
+  computing: [3.05, 3.1, 3.14, 3.18, 3.22, 3.19],
+  education: [2.98, 3.01, 3.06, 3.1, 3.12, 3.08],
+  economics: [2.88, 2.9, 2.96, 3.0, 3.05, 3.01],
+};
+
+const META: Record<CollegeKey, { majors: number; nationalities: number; gpa: string }> = {
+  all: { majors: 139, nationalities: 35, gpa: "3.02" },
+  computing: { majors: 12, nationalities: 9, gpa: "3.19" },
+  education: { majors: 18, nationalities: 11, gpa: "3.08" },
+  economics: { majors: 15, nationalities: 8, gpa: "3.01" },
+};
+
+const TOP_COLLEGES = [
+  { name: "التربية", value: 1008 },
+  { name: "الحاسبات", value: 808 },
+  { name: "الاقتصاد", value: 609 },
+  { name: "التصاميم", value: 452 },
 ];
 
-const CHANNELS = [
-  { name: "In-store", value: 54 },
-  { name: "Online", value: 34 },
-  { name: "App", value: 12 },
+const SPLIT = [
+  { name: "سعودي", value: 3368 },
+  { name: "غير سعودي", value: 119 },
 ];
 
-const CHANNEL_COLORS = ["#121212", "#8C877E", "#D8D3C8"];
+const SPLIT_COLORS = ["#0E6E64", "#C9A227"];
 
 const tooltipStyle = {
   fontSize: 11,
@@ -83,41 +75,39 @@ const tooltipStyle = {
 };
 
 export default function BIDashboard() {
-  const [metric, setMetric] = useState<Metric>("revenue");
-  const [branch, setBranch] = useState<(typeof BRANCHES)[number]>("All");
+  const [college, setCollege] = useState<CollegeKey>("all");
+  const [metric, setMetric] = useState<Metric>("graduates");
 
-  const rows = MONTHLY[branch];
-  const kpis = useMemo(() => {
-    const totalRevenue = rows.reduce((a, r) => a + r.revenue, 0);
-    const totalOrders = rows.reduce((a, r) => a + r.orders, 0);
-    const avgMargin = rows.reduce((a, r) => a + r.margin, 0) / rows.length;
-    const mom = ((rows[5].revenue - rows[4].revenue) / rows[4].revenue) * 100;
-    return { totalRevenue, totalOrders, avgMargin, mom };
-  }, [rows]);
+  const rows = useMemo(
+    () => YEARS.map((y, i) => ({ y, graduates: GRADUATES[college][i], gpa: GPA[college][i] })),
+    [college]
+  );
+  const total = GRADUATES[college].reduce((a, b) => a + b, 0);
+  const meta = META[college];
 
   return (
-    <BrowserFrame url="app.powerbi.com · executive-suite.pbix" className="mx-auto w-full max-w-3xl">
+    <BrowserFrame url="app.powerbi.com · uqu-graduates-1446.pbix" className="mx-auto w-full max-w-3xl">
       <div data-testid="bi-dashboard" className="bg-[#F4F2ED] p-4 text-[#121212] sm:p-5">
         <div className="flex flex-wrap items-center justify-between gap-3">
           <div>
-            <p className="font-heading text-base leading-tight">Retail Performance — H1</p>
+            <p className="font-heading text-base leading-tight">بيانات الطلبة الخريجين — ١٤٤٦هـ</p>
             <p className="font-mono text-[9px] uppercase tracking-[0.18em] text-[#8C877E]">
-              Power BI · DAX · Star schema · Live demo
+              Power BI · DAX · Interactive recreation
             </p>
           </div>
-          <div className="flex flex-wrap gap-1.5">
-            {BRANCHES.map((b) => (
+          <div className="flex flex-wrap gap-1.5" dir="rtl">
+            {COLLEGES.map((c) => (
               <button
-                key={b}
-                data-testid={`bi-branch-${b.toLowerCase()}`}
-                onClick={() => setBranch(b)}
+                key={c.id}
+                data-testid={`bi-college-${c.id}`}
+                onClick={() => setCollege(c.id)}
                 className={`rounded-full px-3 py-1 text-[10px] font-medium transition-colors duration-300 ${
-                  branch === b
-                    ? "bg-[#121212] text-[#F8F7F4]"
-                    : "border border-[#D8D3C8] bg-white text-[#5A5751] hover:border-[#121212]"
+                  college === c.id
+                    ? "bg-[#0E6E64] text-white"
+                    : "border border-[#D8D3C8] bg-white text-[#5A5751] hover:border-[#0E6E64]"
                 }`}
               >
-                {b}
+                {c.label}
               </button>
             ))}
           </div>
@@ -125,13 +115,13 @@ export default function BIDashboard() {
 
         <div className="mt-3 grid grid-cols-2 gap-2 sm:grid-cols-4">
           {[
-            { label: "Revenue", value: `SAR ${(kpis.totalRevenue / 1000).toFixed(2)}M` },
-            { label: "Avg margin", value: `${kpis.avgMargin.toFixed(1)}%` },
-            { label: "Orders", value: kpis.totalOrders.toLocaleString() },
-            { label: "MoM growth", value: `+${kpis.mom.toFixed(1)}%` },
+            { label: "عدد الخريجين", value: total.toLocaleString() },
+            { label: "التخصصات", value: String(meta.majors) },
+            { label: "الجنسيات", value: String(meta.nationalities) },
+            { label: "متوسط المعدل", value: meta.gpa },
           ].map((k) => (
             <div key={k.label} className="rounded-lg border border-[#E3DFD7] bg-white p-2.5">
-              <p className="font-mono text-[8px] uppercase tracking-[0.15em] text-[#8C877E]">{k.label}</p>
+              <p className="text-[9px] text-[#8C877E]">{k.label}</p>
               <p className="mt-0.5 font-heading text-base">{k.value}</p>
             </div>
           ))}
@@ -140,10 +130,8 @@ export default function BIDashboard() {
         <div className="mt-2 grid grid-cols-1 gap-2 sm:grid-cols-5">
           <div className="rounded-lg border border-[#E3DFD7] bg-white p-3 sm:col-span-3">
             <div className="mb-1 flex items-center justify-between">
-              <p className="font-mono text-[8px] uppercase tracking-[0.15em] text-[#8C877E]">
-                Monthly {metric}
-              </p>
-              <div className="flex gap-1">
+              <p className="text-[9px] text-[#8C877E]">حسب سنة القبول</p>
+              <div className="flex gap-1" dir="rtl">
                 {METRICS.map((m) => (
                   <button
                     key={m.id}
@@ -161,13 +149,18 @@ export default function BIDashboard() {
             <div className="h-36">
               <ResponsiveContainer width="100%" height="100%">
                 <AreaChart data={rows} margin={{ top: 4, right: 4, bottom: 0, left: -18 }}>
-                  <XAxis dataKey="m" tick={{ fontSize: 9, fill: "#8C877E" }} axisLine={false} tickLine={false} />
-                  <YAxis tick={{ fontSize: 9, fill: "#8C877E" }} axisLine={false} tickLine={false} />
+                  <XAxis dataKey="y" tick={{ fontSize: 9, fill: "#8C877E" }} axisLine={false} tickLine={false} />
+                  <YAxis
+                    tick={{ fontSize: 9, fill: "#8C877E" }}
+                    axisLine={false}
+                    tickLine={false}
+                    domain={metric === "gpa" ? [2.8, 3.3] : undefined}
+                  />
                   <Tooltip contentStyle={tooltipStyle} />
                   <Area
                     type="monotone"
                     dataKey={metric}
-                    stroke="#121212"
+                    stroke="#0E6E64"
                     strokeWidth={1.5}
                     fill="#E0F65D"
                     fillOpacity={0.35}
@@ -178,16 +171,14 @@ export default function BIDashboard() {
           </div>
 
           <div className="rounded-lg border border-[#E3DFD7] bg-white p-3 sm:col-span-2">
-            <p className="mb-1 font-mono text-[8px] uppercase tracking-[0.15em] text-[#8C877E]">
-              Category mix %
-            </p>
+            <p className="mb-1 text-[9px] text-[#8C877E]">أعلى الكليات</p>
             <div className="h-36">
               <ResponsiveContainer width="100%" height="100%">
-                <BarChart data={CATEGORIES} margin={{ top: 4, right: 4, bottom: 0, left: -22 }}>
+                <BarChart data={TOP_COLLEGES} margin={{ top: 4, right: 4, bottom: 0, left: -22 }}>
                   <XAxis dataKey="name" tick={{ fontSize: 8, fill: "#8C877E" }} axisLine={false} tickLine={false} />
                   <YAxis tick={{ fontSize: 9, fill: "#8C877E" }} axisLine={false} tickLine={false} />
                   <Tooltip contentStyle={tooltipStyle} />
-                  <Bar dataKey="value" fill="#121212" radius={[3, 3, 0, 0]} />
+                  <Bar dataKey="value" fill="#0E6E64" radius={[3, 3, 0, 0]} />
                 </BarChart>
               </ResponsiveContainer>
             </div>
@@ -198,26 +189,26 @@ export default function BIDashboard() {
           <div className="h-20 w-20 shrink-0">
             <ResponsiveContainer width="100%" height="100%">
               <PieChart>
-                <Pie data={CHANNELS} dataKey="value" innerRadius={22} outerRadius={36} strokeWidth={0}>
-                  {CHANNELS.map((c, i) => (
-                    <Cell key={c.name} fill={CHANNEL_COLORS[i]} />
+                <Pie data={SPLIT} dataKey="value" innerRadius={22} outerRadius={36} strokeWidth={0}>
+                  {SPLIT.map((s, i) => (
+                    <Cell key={s.name} fill={SPLIT_COLORS[i]} />
                   ))}
                 </Pie>
               </PieChart>
             </ResponsiveContainer>
           </div>
-          <div className="flex flex-wrap gap-x-5 gap-y-1.5">
-            {CHANNELS.map((c, i) => (
-              <div key={c.name} className="flex items-center gap-1.5">
-                <span className="h-2 w-2 rounded-full" style={{ backgroundColor: CHANNEL_COLORS[i] }} aria-hidden="true" />
+          <div className="flex flex-wrap gap-x-5 gap-y-1.5" dir="rtl">
+            {SPLIT.map((s, i) => (
+              <div key={s.name} className="flex items-center gap-1.5">
+                <span className="h-2 w-2 rounded-full" style={{ backgroundColor: SPLIT_COLORS[i] }} aria-hidden="true" />
                 <span className="text-[10px] text-[#5A5751]">
-                  {c.name} · {c.value}%
+                  {s.name} · {s.value.toLocaleString()}
                 </span>
               </div>
             ))}
           </div>
           <p className="ml-auto hidden font-mono text-[8px] uppercase tracking-[0.15em] text-[#8C877E] sm:block">
-            Channel share
+            Saudi / Non-Saudi
           </p>
         </div>
       </div>

@@ -198,21 +198,24 @@ export const projects: Project[] = [
   {
     id: "bi",
     index: "04",
-    title: "Executive BI Intelligence Suite",
+    title: "UQU Graduates BI Dashboard",
     category: "Business Intelligence · Power BI",
-    tagline: "Retail telemetry distilled into an executive dashboard — filterable in one click.",
+    tagline: "A fully Arabic Power BI dashboard tracking 3,487 graduates across 28 colleges at Umm Al-Qura University.",
     objective:
-      "Consolidate multi-branch retail performance into a single executive view: revenue, margin, and order volume with branch-level filtering and month-over-month reading — designed in Figma, modeled in Power BI.",
-    tools: ["Power BI", "DAX", "Power Query", "Excel", "Figma"],
+      "Build an executive-ready Arabic (RTL) dashboard for Umm Al-Qura University summarizing the third-semester graduates of 1446H — headcount, colleges, departments, majors, nationalities, and average GPA — with one-click slicers for admission year, nationality, and college.",
+    tools: ["Power BI", "DAX", "Power Query", "Excel"],
     process: [
-      "Modeled sales data into a clean star schema for branch, product, and time dimensions.",
-      "Wrote DAX measures for MoM growth, margin percentage, and order counts.",
-      "Designed the dashboard canvas in Figma first — strict grid, restrained palette, clear hierarchy.",
-      "Built drill-down interactivity so one filter click re-reads the entire page.",
+      "Cleaned and modeled graduate records with Power Query before loading to the model.",
+      "Wrote DAX measures for graduate headcount, distinct colleges/departments/majors/nationalities, and average GPA (3.02).",
+      "Designed a KPI card row, a Saudi vs non-Saudi split (3,368 / 119), and an admission-year trend line.",
+      "Built interactive slicers — admission year, nationality, college — in a fully Arabic RTL layout.",
     ],
     deliverables:
-      "Interactive Power BI dashboard, DAX measure library, and an executive KPI sheet. Live interactive recreation below — try the filters.",
+      "Published Arabic Power BI dashboard: 3,487 graduates · 28 colleges · 69 departments · 139 majors · 35 nationalities — with drill-down filtering. Interactive mini-recreation below — try the filters.",
     visual: "bi",
+    images: [
+      { src: "/projects/bi-real.webp", caption: "Live dashboard — UQU graduates, Semester 3, 1446H" },
+    ],
   },
   {
     id: "challenge",

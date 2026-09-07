@@ -23,7 +23,20 @@ function FramedImage({ src, caption }: { src: string; caption: string }) {
 }
 
 function Visual({ project }: { project: Project }) {
-  if (project.visual === "bi") return <BIDashboard />;
+  if (project.visual === "bi") {
+    const img = project.images?.[0];
+    return (
+      <div className="mx-auto w-full max-w-3xl space-y-8">
+        {img && <FramedImage src={img.src} caption={img.caption} />}
+        <div>
+          <BIDashboard />
+          <p className="mt-3 text-center font-mono text-[10px] uppercase tracking-[0.2em] text-[#8C877E]">
+            Interactive mini-recreation — try the filters
+          </p>
+        </div>
+      </div>
+    );
+  }
   if (project.visual === "wasla") {
     const img = project.images?.[0];
     if (!img) return null;

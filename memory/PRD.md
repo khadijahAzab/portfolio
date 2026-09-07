@@ -28,7 +28,13 @@ Design and build a professional portfolio integrating the owner's CV with UI/UX 
 ## Verified
 - `yarn typecheck` clean; `/api/` + `/api/status` POST via public URL; CV PDF 200; screenshots: hero, about, projects, bloom, empwell, bi (filters clicked — values update), contact (copy fallback added after permission-denied in headless test)
 
-## Updates (2026-09-07, round 2 — owner feedback, Arabic)
+## Updates (2026-09-07, round 4)
+- Site/link display name changed to "بروتوفوليو خديجة — Khadijah Ahmed Azab": index.html title, meta description, Open Graph + Twitter card tags (Arabic). Note: the preview URL host itself is platform-assigned and cannot be renamed in code; a custom domain requires deployment settings.
+
+## Updates (2026-09-07, round 3 — owner provided real Power BI dashboard)
+- BI project is now "UQU Graduates BI Dashboard": real Arabic Power BI dashboard image (graduates, semester 3, 1446H — 3,487 graduates / 28 colleges / 69 departments / 139 majors / 35 nationalities / GPA 3.02) saved as `public/projects/bi-real.webp`
+- Interactive mini-recreation re-themed to match the real dashboard: Arabic UI, teal/gold palette, college slicers (كل الكليات/الحاسبات/التربية/الإدارة والاقتصاد), metric toggle (الخريجين/المعدل), KPI cards, admission-year area chart, top-colleges bars, Saudi/non-Saudi donut (3,368/119)
+- Owner confirmed no LinkedIn URL and no additional project images available
 - Project visuals now use the owner's ORIGINAL images (no code-rebuilt mockups): Bloom & EmpWell uploaded collages, 15-interfaces boards + TechFix/IA/Design-Systems cropped from the uploaded PDFs at 3x render + sharpen, saved as high-quality WebP in `frontend/public/projects/`; Wasla shows a real screenshot of the live site
 - Wasla tools: removed Flutter & Dart per owner request (now Figma, Firebase, WCAG 2.1 AA, Usability Testing)
 - About: second (small) paragraph removed; only the CV professional summary remains
