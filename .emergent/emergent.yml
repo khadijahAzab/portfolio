@@ -1,3 +1,5 @@
 {
-  "env_image_name": "farm_ts_react_mongo_base_image_cloud_arm:release-04092026-2"
+  "env_image_name": "farm_ts_react_mongo_base_image_cloud_arm:release-04092026-2",
+  "job_id": "7dda06e6-7b96-4ac7-b801-f8fce3e175ba",
+  "created_at": "2026-09-07T10:55:56.465413+00:00Z"
 }
